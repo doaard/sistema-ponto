@@ -1,0 +1,223 @@
+/* EspelhoPonto.css */
+
+.espelho-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.espelho-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.espelho-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.filtros-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filtro-label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.filtro-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.filtro-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.resumo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.resumo-card {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+  text-align: center;
+}
+
+.resumo-titulo {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.resumo-valor {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.tabela-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.espelho-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.espelho-table th {
+  background: #f8f9fa;
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.espelho-table td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.espelho-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.espelho-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Cores para diferentes tipos de horas */
+.horas-normais {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.horas-extras {
+  color: #007bff;
+  font-weight: 500;
+}
+
+.faltas {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.atrasos {
+  color: #fd7e14;
+  font-weight: 500;
+}
+
+.adicional-noturno {
+  color: #6f42c1;
+  font-weight: 500;
+}
+
+.funcionario-nome {
+  font-weight: 600;
+  color: #333;
+}
+
+.data-cell {
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.dia-semana {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.observacoes {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+}
+
+.sem-dados {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.sem-dados-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .espelho-container {
+    margin: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .espelho-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .filtros-container {
+    justify-content: center;
+  }
+  
+  .resumo-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .espelho-table {
+    font-size: 0.8rem;
+  }
+  
+  .espelho-table th,
+  .espelho-table td {
+    padding: 0.4rem 0.3rem;
+  }
+}

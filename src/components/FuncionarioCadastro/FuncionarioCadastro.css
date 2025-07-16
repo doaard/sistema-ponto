@@ -1,0 +1,21 @@
+.container-form {
+  background: #fff;
+  max-width: 530px;
+  margin: 2rem auto;
+  padding: 2.5rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+
+.form-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: space-between;
+}

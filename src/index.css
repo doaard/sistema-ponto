@@ -1,0 +1,84 @@
+
+:root {
+  --azul-dixi:   #0061ff;
+  --azul-hover:  #004ed1;
+  --branco:      #ffffff;
+  --cinza-borda: #d9d9d9;
+  --vermelho:    #d00000;
+  --verde:       #198754;
+  --fonte-base:  'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--fonte-base);
+  background: #f7f9fc;
+  margin: 0;
+}
+
+/* .form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1d4ed8;
+  margin-bottom: 20px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.required {
+  color: red;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.salvar {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn.salvar:hover {
+  background-color: #1e40af;
+}
+
+.btn.limpar {
+  background-color: #e5e7eb;
+}
+
+.btn.limpar:hover {
+  background-color: #d1d5db;
+} */
