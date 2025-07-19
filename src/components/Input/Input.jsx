@@ -14,12 +14,12 @@ const Input = ({
 }) => {
   const handleChange = (e) => {
     let inputValue = e.target.value;
-    
+
     // Aplicar máscara se fornecida
     if (mask && type !== 'date' && type !== 'select') {
       inputValue = applyMask(inputValue, mask);
     }
-    
+
     // Criar evento personalizado para manter compatibilidade
     const event = {
       target: {
@@ -27,7 +27,7 @@ const Input = ({
         value: inputValue
       }
     };
-    
+
     onChange(event);
   };
 
@@ -35,7 +35,7 @@ const Input = ({
     const cleanValue = value.replace(/\D/g, '');
     let maskedValue = '';
     let valueIndex = 0;
-    
+
     for (let i = 0; i < maskPattern.length && valueIndex < cleanValue.length; i++) {
       if (maskPattern[i] === '9') {
         maskedValue += cleanValue[valueIndex];
@@ -44,7 +44,7 @@ const Input = ({
         maskedValue += maskPattern[i];
       }
     }
-    
+
     return maskedValue;
   };
 
