@@ -32,14 +32,14 @@ const FuncionarioCadastro = () => {
 
   const validarCPF = (cpf) => {
     if (!padraoCPF.test(cpf)) return false;
-    
+
     // Validação adicional de CPF
     const cpfLimpo = cpf.replace(/\D/g, '');
     if (cpfLimpo.length !== 11) return false;
-    
+
     // Verifica se todos os dígitos são iguais
     if (/^(\d)\1{10}$/.test(cpfLimpo)) return false;
-    
+
     // Validação dos dígitos verificadores
     let soma = 0;
     for (let i = 0; i < 9; i++) {
@@ -48,7 +48,7 @@ const FuncionarioCadastro = () => {
     let resto = (soma * 10) % 11;
     if (resto === 10 || resto === 11) resto = 0;
     if (resto !== parseInt(cpfLimpo.charAt(9))) return false;
-    
+
     soma = 0;
     for (let i = 0; i < 10; i++) {
       soma += parseInt(cpfLimpo.charAt(i)) * (11 - i);
@@ -56,7 +56,7 @@ const FuncionarioCadastro = () => {
     resto = (soma * 10) % 11;
     if (resto === 10 || resto === 11) resto = 0;
     if (resto !== parseInt(cpfLimpo.charAt(10))) return false;
-    
+
     return true;
   };
 
