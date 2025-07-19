@@ -7,7 +7,7 @@
 1. Clone o repositório
 2. Instale dependências com `npm install`
 3. Rode com `npm start`
-4. Acesse `http://localhost:3000`
+4. Acesse `http://localhost:5173/`
 
 ## 📁 Estrutura
 - `/components` – componentes reutilizáveis
