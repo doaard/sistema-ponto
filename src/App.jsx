@@ -36,15 +36,15 @@ function App() {
         <main className="app-main">
           <Routes>
             {/* Página inicial */}
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
                 <div className="home-container">
                   <div className="welcome-section">
                     <h2>🎯 Bem-vindo ao Sistema de Ponto</h2>
                     <p>Gerencie funcionários e importe marcações de ponto de forma simples e eficiente.</p>
                   </div>
-                  
+
                   <div className="quick-actions">
                     <h3>🚀 Ações Rápidas</h3>
                     <div className="action-cards">
@@ -55,11 +55,11 @@ function App() {
                           <Botao
                             texto="Cadastrar Funcionário"
                             icone={<IoMdSave />}
-                            aoClicar={() => {}}
+                            aoClicar={() => { }}
                           />
                         </Link>
                       </div>
-                      
+
                       <div className="action-card">
                         <h4>📁 Importar AFD</h4>
                         <p>Importe arquivos AFD e processe marcações de ponto automaticamente.</p>
@@ -67,7 +67,7 @@ function App() {
                           <Botao
                             texto="Importar AFD"
                             icone={<IoMdCloudUpload />}
-                            aoClicar={() => {}}
+                            aoClicar={() => { }}
                           />
                         </Link>
                       </div>
@@ -79,32 +79,32 @@ function App() {
                           <Botao
                             texto="Ver Espelho de Ponto"
                             icone={<IoMdTime />}
-                            aoClicar={() => {}}
+                            aoClicar={() => { }}
                           />
                         </Link>
                       </div>
                     </div>
                   </div>
                 </div>
-              } 
+              }
             />
 
             {/* Página de cadastro de funcionário */}
-            <Route 
-              path="/funcionarioCadastro" 
-              element={<FuncionarioCadastro />} 
+            <Route
+              path="/funcionarioCadastro"
+              element={<FuncionarioCadastro />}
             />
 
             {/* Página de importar AFD */}
-            <Route 
-              path="/importarAFD" 
-              element={<ImportarAFD />} 
+            <Route
+              path="/importarAFD"
+              element={<ImportarAFD />}
             />
 
             {/* Página de espelho de ponto */}
-            <Route 
-              path="/espelhoPonto" 
-              element={<EspelhoPonto />} 
+            <Route
+              path="/espelhoPonto"
+              element={<EspelhoPonto />}
             />
           </Routes>
         </main>

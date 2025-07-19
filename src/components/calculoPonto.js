@@ -58,12 +58,12 @@ const minutosParaHorario = (minutos) => {
 const calcularDiferenca = (inicio, fim) => {
   let minutosInicio = horarioParaMinutos(inicio);
   let minutosFim = horarioParaMinutos(fim);
-  
+
   // Se o horário de fim é menor que o de início, passou da meia-noite
   if (minutosFim < minutosInicio) {
     minutosFim += 24 * 60; // Adiciona 24 horas
   }
-  
+
   return minutosFim - minutosInicio;
 };
 
@@ -86,26 +86,26 @@ const calcularHorasTrabalhadas = (entrada, saida) => {
  */
 const calcularAdicionalNoturno = (entrada, saida) => {
   if (!entrada || !saida) return 0;
-  
+
   const inicioNoturno = horarioParaMinutos(INICIO_NOTURNO);
   const fimNoturno = horarioParaMinutos(FIM_NOTURNO) + 24 * 60; // Próximo dia
-  
+
   let minutosEntrada = horarioParaMinutos(entrada);
   let minutosSaida = horarioParaMinutos(saida);
-  
+
   // Se saída é menor que entrada, passou da meia-noite
   if (minutosSaida < minutosEntrada) {
     minutosSaida += 24 * 60;
   }
-  
+
   // Verifica intersecção com período noturno
   const inicioTrabalho = Math.max(minutosEntrada, inicioNoturno);
   const fimTrabalho = Math.min(minutosSaida, fimNoturno);
-  
+
   if (inicioTrabalho < fimTrabalho) {
     return fimTrabalho - inicioTrabalho;
   }
-  
+
   return 0;
 };
 
@@ -117,7 +117,7 @@ const calcularAdicionalNoturno = (entrada, saida) => {
  */
 export const calcularPontoDia = (marcacoes, diaSemana) => {
   const horariosEsperados = HORARIOS_PADRAO[diaSemana] || [];
-  
+
   // Se é folga, retorna zerado
   if (horariosEsperados.length === 0) {
     return {
@@ -130,40 +130,40 @@ export const calcularPontoDia = (marcacoes, diaSemana) => {
       isfolga: true
     };
   }
-  
+
   // Calcula horas trabalhadas total
   let totalTrabalhado = 0;
   let totalNoturno = 0;
   let totalAtrasos = 0;
-  
+
   // Processa cada período trabalhado
   const periodos = [];
   for (let i = 1; i <= 4; i++) {
     const entrada = marcacoes[`entrada${i}`];
     const saida = marcacoes[`saida${i}`];
-    
+
     if (entrada && saida) {
       const horasTrabalhadas = calcularHorasTrabalhadas(entrada, saida);
       const adicionalNoturno = calcularAdicionalNoturno(entrada, saida);
-      
+
       periodos.push({ entrada, saida, horasTrabalhadas, adicionalNoturno });
       totalTrabalhado += horasTrabalhadas;
       totalNoturno += adicionalNoturno;
     }
   }
-  
+
   // Calcula horas normais esperadas
   let horasNormaisEsperadas = 0;
   horariosEsperados.forEach(periodo => {
     horasNormaisEsperadas += calcularHorasTrabalhadas(periodo.entrada, periodo.saida);
   });
-  
+
   // Calcula atrasos comparando com horários esperados
   periodos.forEach((periodo, index) => {
     if (horariosEsperados[index]) {
       const entradaEsperada = horarioParaMinutos(horariosEsperados[index].entrada);
       const entradaReal = horarioParaMinutos(periodo.entrada);
-      
+
       if (entradaReal > entradaEsperada) {
         const atraso = entradaReal - entradaEsperada;
         if (atraso > TOLERANCIA_POR_OCORRENCIA) {
@@ -172,12 +172,12 @@ export const calcularPontoDia = (marcacoes, diaSemana) => {
       }
     }
   });
-  
+
   // Calcula horas extras e faltas
   const horasNormais = Math.min(totalTrabalhado, horasNormaisEsperadas);
   const horasExtras = Math.max(0, totalTrabalhado - horasNormaisEsperadas);
   const faltas = Math.max(0, horasNormaisEsperadas - totalTrabalhado);
-  
+
   return {
     horasTrabalhadas: totalTrabalhado,
     horasNormais,
@@ -196,7 +196,7 @@ export const calcularPontoDia = (marcacoes, diaSemana) => {
  */
 export const formatarMinutos = (minutos) => {
   if (minutos === 0) return '00:00';
-  
+
   const horas = Math.floor(minutos / 60);
   const mins = minutos % 60;
   return `${horas.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
@@ -208,26 +208,26 @@ export const formatarMinutos = (minutos) => {
  */
 export const gerarDadosExemplo = () => {
   const funcionarios = JSON.parse(localStorage.getItem('funcionarios')) || [];
-  
+
   if (funcionarios.length === 0) {
     return [];
   }
-  
+
   const dados = [];
   const hoje = new Date();
-  
+
   // Gera dados para os últimos 30 dias
   for (let i = 0; i < 30; i++) {
     const data = new Date(hoje);
     data.setDate(hoje.getDate() - i);
-    
+
     funcionarios.forEach(funcionario => {
       const diaSemana = data.getDay();
-      
+
       // Simula marcações de ponto
       const marcacoes = gerarMarcacoesExemplo(diaSemana);
       const calculosPonto = calcularPontoDia(marcacoes, diaSemana);
-      
+
       dados.push({
         id: `${funcionario.id}-${data.toISOString().split('T')[0]}`,
         funcionarioId: funcionario.id,
@@ -240,7 +240,7 @@ export const gerarDadosExemplo = () => {
       });
     });
   }
-  
+
   return dados.reverse(); // Ordem cronológica
 };
 
@@ -252,18 +252,18 @@ export const gerarDadosExemplo = () => {
 const gerarMarcacoesExemplo = (diaSemana) => {
   const horariosEsperados = HORARIOS_PADRAO[diaSemana] || [];
   const marcacoes = {};
-  
+
   horariosEsperados.forEach((periodo, index) => {
     // Simula pequenos atrasos/adiantamentos aleatórios
     const variacao = Math.floor(Math.random() * 20) - 10; // -10 a +10 minutos
     const variacaoSaida = Math.floor(Math.random() * 20) - 10;
-    
+
     const entradaMinutos = horarioParaMinutos(periodo.entrada) + variacao;
     const saidaMinutos = horarioParaMinutos(periodo.saida) + variacaoSaida;
-    
+
     marcacoes[`entrada${index + 1}`] = minutosParaHorario(Math.max(0, entradaMinutos));
     marcacoes[`saida${index + 1}`] = minutosParaHorario(Math.max(0, saidaMinutos));
   });
-  
+
   return marcacoes;
 };
