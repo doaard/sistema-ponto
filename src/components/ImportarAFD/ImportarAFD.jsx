@@ -25,7 +25,7 @@ const ImportarAFD = () => {
         setErros({ arquivo: 'Tipo de arquivo não suportado. Use arquivos .txt ou .afd' });
         return;
       }
-      
+
       setArquivo(file);
       setErros({});
       setSucesso('');
@@ -37,7 +37,7 @@ const ImportarAFD = () => {
     // Aqui você implementaria a lógica específica para seu formato AFD
     const linhas = conteudo.split('\n');
     const registros = [];
-    
+
     linhas.forEach((linha, index) => {
       linha = linha.trim();
       if (linha) {
@@ -54,7 +54,7 @@ const ImportarAFD = () => {
         }
       }
     });
-    
+
     return registros;
   };
 
@@ -71,7 +71,7 @@ const ImportarAFD = () => {
     try {
       const conteudo = await arquivo.text();
       const registrosProcessados = await processarArquivoAFD(conteudo);
-      
+
       if (registrosProcessados.length === 0) {
         setErros({ processamento: 'Nenhum registro válido encontrado no arquivo' });
         return;
@@ -79,12 +79,12 @@ const ImportarAFD = () => {
 
       setDados(registrosProcessados);
       setSucesso(`${registrosProcessados.length} registros importados com sucesso!`);
-      
+
       // Salvar no localStorage (opcional)
       const dadosExistentes = JSON.parse(localStorage.getItem('dadosAFD')) || [];
       const novosDados = [...dadosExistentes, ...registrosProcessados];
       localStorage.setItem('dadosAFD', JSON.stringify(novosDados));
-      
+
     } catch (error) {
       console.error('Erro ao processar arquivo:', error);
       setErros({ processamento: 'Erro ao processar arquivo. Verifique o formato.' });
@@ -124,7 +124,7 @@ const ImportarAFD = () => {
             error={erros.arquivo}
             id="arquivo-input"
           />
-          
+
           {arquivo && (
             <div className="file-info">
               <p>📄 Arquivo selecionado: {arquivo.name}</p>
