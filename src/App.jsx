@@ -3,7 +3,7 @@ import FuncionarioCadastro from './components/FuncionarioCadastro/FuncionarioCad
 import ImportarAFD from './components/ImportarAFD/ImportarAFD';
 import EspelhoPonto from './components/EspelhoPonto/EspelhoPonto';
 import Botao from './components/Botao/Botao';
-import { IoMdSave, IoMdCloudUpload } from "react-icons/io";
+import { IoMdSave, IoMdCloudUpload, IoMdTime } from "react-icons/io";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
@@ -24,6 +24,9 @@ function App() {
               </Link>
               <Link to="/importarAFD" className="nav-link">
                 📁 Importar AFD
+              </Link>
+              <Link to="/espelhoPonto" className="nav-link">
+                📊 Espelho de Ponto
               </Link>
             </nav>
           </div>
@@ -68,6 +71,18 @@ function App() {
                           />
                         </Link>
                       </div>
+
+                      <div className="action-card">
+                        <h4>📊 Espelho de Ponto</h4>
+                        <p>Visualize e gerencie os registros de ponto dos funcionários.</p>
+                        <Link to="/espelhoPonto">
+                          <Botao
+                            texto="Ver Espelho de Ponto"
+                            icone={<IoMdTime />}
+                            aoClicar={() => {}}
+                          />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -84,6 +99,12 @@ function App() {
             <Route 
               path="/importarAFD" 
               element={<ImportarAFD />} 
+            />
+
+            {/* Página de espelho de ponto */}
+            <Route 
+              path="/espelhoPonto" 
+              element={<EspelhoPonto />} 
             />
           </Routes>
         </main>
